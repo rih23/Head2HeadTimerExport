@@ -38,7 +38,7 @@ namespace Celeste.Mod.TimerExport {
         private void OnMatchUpdate(DataH2HMatchUpdate data){
             //Doing nothing if the match update doesn't update to completed
             if(data.NewDef.State == MatchState.Completed){
-                using (StreamWriter writer = new StreamWriter("./Head2Head-Times.txt", append: true)){
+                using (StreamWriter writer = new StreamWriter(Settings.FilePath, append: true)){
                     //All of the matches
                     Dictionary<string, MatchDefinition> matches = Head2HeadModule.knownMatches;
                     foreach(KeyValuePair<string, MatchDefinition> entry in matches){
