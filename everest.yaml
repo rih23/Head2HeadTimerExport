@@ -1,0 +1,8 @@
+- Name: TimerExport
+  Version: 0.1.0
+  DLL: bin/TimerExport.dll
+  Dependencies:
+    - Name: Everest
+      Version: 1.3471.0
+    - Name: Head2Head
+      Version: 1.1.6
