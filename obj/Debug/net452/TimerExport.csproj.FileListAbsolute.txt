@@ -1,0 +1,9 @@
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/bin/Debug/net452/TimerExport.dll
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/bin/Debug/net452/TimerExport.pdb
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/obj/Debug/net452/TimerExport.csproj.AssemblyReference.cache
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/obj/Debug/net452/TimerExport.GeneratedMSBuildEditorConfig.editorconfig
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/obj/Debug/net452/TimerExport.AssemblyInfoInputs.cache
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/obj/Debug/net452/TimerExport.AssemblyInfo.cs
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/obj/Debug/net452/TimerExport.csproj.CoreCompileInputs.cache
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/obj/Debug/net452/TimerExport.dll
+/home/rihards/.local/share/Steam/steamapps/common/Celeste/Mods/TimerExport/obj/Debug/net452/TimerExport.pdb
