@@ -1,5 +1,5 @@
 - Name: TimerExport
-  Version: 0.1.0
+  Version: 1.0.0
   DLL: bin/TimerExport.dll
   Dependencies:
     - Name: Everest
