@@ -53,10 +53,19 @@ namespace Celeste.Mod.TimerExport {
                                 if(playerResult.Value.Result == ResultCategory.Completed){
                                     long timeTicks = playerResult.Value.FileTimeTotal/10000;
                                     string ms = (timeTicks % 1000).ToString();
+                                    while(ms.Length < 3){
+                                        ms = '0' + ms;
+                                    }
                                     timeTicks /= 1000;
                                     string ss = (timeTicks % 60).ToString();
+                                    while(ss.Length < 2){
+                                        ss = '0' + ss;
+                                    }
                                     timeTicks /= 60;
                                     string mm = (timeTicks % 100).ToString();
+                                    while(mm.Length < 2){
+                                        mm = '0' + mm;
+                                    }
                                     string timeString = mm+":"+ss+"."+ms;
                                     writer.WriteLine(playerResult.Key.Name+" - "+timeString);
                                 }
