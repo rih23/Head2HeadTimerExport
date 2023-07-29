@@ -72,8 +72,8 @@ namespace Celeste.Mod.TimerExport {
                             else{
                                 writer.WriteLine(playerResult.Key.Name+" - "+playerResult.Value.Result);
                             }
-                            writer.WriteLine();
                         }
+                        writer.WriteLine();
                     }
                 }
             }
