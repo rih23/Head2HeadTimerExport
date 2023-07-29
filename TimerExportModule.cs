@@ -39,43 +39,40 @@ namespace Celeste.Mod.TimerExport {
             //Doing nothing if the match update doesn't update to completed
             if(data.NewDef.State == MatchState.Completed){
                 using (StreamWriter writer = new StreamWriter(Settings.FilePath, append: true)){
-                    //All of the matches
-                    Dictionary<string, MatchDefinition> matches = Head2HeadModule.knownMatches;
-                    foreach(KeyValuePair<string, MatchDefinition> entry in matches){
-                        if(entry.Value.Players.Count > 0 && entry.Value.State == MatchState.Completed){
-                            DateTime currentDateTime = DateTime.Now;
-                            writer.WriteLine("-----------"+currentDateTime+"----------");
-                            writer.WriteLine(entry.Value.MatchDisplayName);
-                            writer.WriteLine("-----------------------");
-                            List<PlayerID> players = entry.Value.Players;
-                            Dictionary<PlayerID, MatchResultPlayer> results = entry.Value.Result.players;
-                            foreach(KeyValuePair<PlayerID, MatchResultPlayer> playerResult in results){
-                                if(playerResult.Value.Result == ResultCategory.Completed){
-                                    long timeTicks = playerResult.Value.FileTimeTotal/10000;
-                                    string ms = (timeTicks % 1000).ToString();
-                                    while(ms.Length < 3){
-                                        ms = '0' + ms;
-                                    }
-                                    timeTicks /= 1000;
-                                    string ss = (timeTicks % 60).ToString();
-                                    while(ss.Length < 2){
-                                        ss = '0' + ss;
-                                    }
-                                    timeTicks /= 60;
-                                    string mm = (timeTicks % 100).ToString();
-                                    while(mm.Length < 2){
-                                        mm = '0' + mm;
-                                    }
-                                    string timeString = mm+":"+ss+"."+ms;
-                                    writer.WriteLine(playerResult.Key.Name+" - "+timeString);
+                    MatchDefinition match = data.NewDef;
+                    if(match.Players.Count > 0 && match.State == MatchState.Completed){
+                        DateTime currentDateTime = DateTime.Now;
+                        writer.WriteLine("-----------"+currentDateTime+"----------");
+                        writer.WriteLine(match.MatchDisplayName);
+                        writer.WriteLine("-----------------------");
+                        List<PlayerID> players = match.Players;
+                        Dictionary<PlayerID, MatchResultPlayer> results = match.Result.players;
+                        foreach(KeyValuePair<PlayerID, MatchResultPlayer> playerResult in results){
+                            if(playerResult.Value.Result == ResultCategory.Completed){
+                                //Converting the time from ticks to ms ss mm 
+                                //Padding the time values with zeros
+                                long timeTicks = playerResult.Value.FileTimeTotal/10000;
+                                string ms = (timeTicks % 1000).ToString();
+                                while(ms.Length < 3){
+                                    ms = '0' + ms;
                                 }
-                                else{
-                                    long timeStart = playerResult.Value.FileTimeStart;
-                                    long timeEnd = playerResult.Value.FileTimeEnd;
-                                    writer.WriteLine(playerResult.Key.Name+" - "+playerResult.Value.Result);
+                                timeTicks /= 1000;
+                                string ss = (timeTicks % 60).ToString();
+                                while(ss.Length < 2){
+                                    ss = '0' + ss;
                                 }
-                                writer.WriteLine();
+                                timeTicks /= 60;
+                                string mm = (timeTicks % 100).ToString();
+                                while(mm.Length < 2){
+                                    mm = '0' + mm;
+                                }
+                                string timeString = mm+":"+ss+"."+ms;
+                                writer.WriteLine(playerResult.Key.Name+" - "+timeString);
                             }
+                            else{
+                                writer.WriteLine(playerResult.Key.Name+" - "+playerResult.Value.Result);
+                            }
+                            writer.WriteLine();
                         }
                     }
                 }
